@@ -1,0 +1,11 @@
+{
+    "min_amount": 1,
+    "max_amount": 10,
+    "min_count": 3,
+    "max_count": 8,
+    "sleep_seconds": 3600,
+    "min_eth_wd": 0.01,
+    "max_eth_wd": 0.05,
+    "enable_token_transfer": true
+}
+

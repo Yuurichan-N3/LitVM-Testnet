@@ -1,0 +1,21 @@
+{
+    "0xYOUR_FIRST_WALLET_ADDRESS_HERE": [
+        {
+            "ca": "0xFIRST_TOKEN_CONTRACT_ADDRESS",
+            "name": "First Token Name",
+            "ticker": "TKN1"
+        },
+        {
+            "ca": "0xSECOND_TOKEN_CONTRACT_ADDRESS",
+            "name": "Second Token Name",
+            "ticker": "TKN2"
+        }
+    ],
+    "0xYOUR_SECOND_WALLET_ADDRESS_HERE": [
+        {
+            "ca": "0xTHIRD_TOKEN_CONTRACT_ADDRESS",
+            "name": "Third Token Name",
+            "ticker": "TKN3"
+        }
+    ]
+}
