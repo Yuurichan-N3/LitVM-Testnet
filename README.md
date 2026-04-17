@@ -63,15 +63,35 @@ Add as many wallets as needed by incrementing the number.
 
 ```json
 {
-  "min_amount": 1,
-  "max_amount": 1,
-  "min_count": 1,
-  "max_count": 1,
-  "sleep_seconds": 3600,
-  "min_eth_wd": 0.01,
-  "max_eth_wd": 0.05,
-  "enable_token_transfer": true
+  "eth_withdrawal": {
+    "enable": true,
+    "min_amount_eth": 0.1,
+    "max_amount_eth": 0.5
+  },
+  "token_transfer": {
+    "enable": true,
+    "min_amount": 5,
+    "max_amount": 10,
+    "min_count": 2,
+    "max_count": 5
+  },
+  "wrap": {
+    "enable": true,
+    "min_amount_eth": 0.01,
+    "max_amount_eth": 0.02,
+    "min_count": 1,
+    "max_count": 3
+  },
+  "supply": {
+    "enable": true,
+    "min_amount_eth": 0.01,
+    "max_amount_eth": 0.02,
+    "min_count": 1,
+    "max_count": 2
+  },
+  "sleep_seconds": 3600
 }
+
 ```
 
 `min_eth_wd` and `max_eth_wd` control the random ETH amount (in ether) sent to the bridge per wallet. `min_count` and `max_count` set how many token transfer transactions run per wallet per cycle. `min_amount` and `max_amount` define the random token amount per transfer. `sleep_seconds` is the fixed delay between cycles. Set `enable_token_transfer` to `false` to skip the token transfer phase entirely.
