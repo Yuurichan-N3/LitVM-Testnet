@@ -8,8 +8,8 @@
     "enable": true,
     "min_amount": 5,
     "max_amount": 10,
-    "min_count": 2,
-    "max_count": 5
+    "min_count": 1,
+    "max_count": 1
   },
   "wrap": {
     "enable": true,
@@ -25,5 +25,6 @@
     "min_count": 1,
     "max_count": 2
   },
-  "sleep_seconds": 3600
+  "sleep_seconds": 300,
+  "max_claim_retries": 2
 }
