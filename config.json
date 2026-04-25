@@ -25,6 +25,10 @@
     "min_count": 1,
     "max_count": 2
   },
+  "mint_nft": {
+    "enable": true,
+    "max_nft_per_wallet": 5
+  },
   "sleep_seconds": 300,
   "max_claim_retries": 2
 }
