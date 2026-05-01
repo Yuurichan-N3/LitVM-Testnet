@@ -5,3 +5,5 @@ python-dotenv==1.0.1
 colorama==0.4.6
 pyfiglet==1.0.4
 yuurisan==1.0.1
+cryptography==44.0.2
+faker>=26.0.0
