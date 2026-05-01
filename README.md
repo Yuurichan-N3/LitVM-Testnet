@@ -2,19 +2,20 @@
 
 <img width="100%" alt="header" src="https://capsule-render.vercel.app/api?type=waving&height=210&text=LitVM%20Testnet%20Bot&fontAlign=50&fontAlignY=36&fontSize=56&desc=ETH%20Bridge%20%7C%20Token%20Transfer%20%7C%20Auto%20Claim&descAlign=50&descAlignY=58"/>
 
-<img alt="typing" src="https://readme-typing-svg.demolab.com?font=Inter&size=18&duration=3000&pause=650&center=true&vCenter=true&width=900&lines=Auto+ETH+Withdrawal+LitVM+%E2%86%92+Sepolia;Auto+Token+Transfer+to+Random+Addresses;Auto+Bridge+Order+Polling+%2B+Claim;Multi+Wallet+Support"/>
+<img alt="typing" src="https://readme-typing-svg.demolab.com?font=Inter&size=18&duration=3000&pause=650&center=true&vCenter=true&width=900&lines=Auto+ETH+Withdrawal+LitVM+%E2%86%92+Sepolia;Auto+Token+Transfer+to+Random+Addresses;Auto+Bridge+Order+Polling+%2B+Claim;Multi+Wallet+Support;Modular+Architecture"/>
 
 <p>
   <img alt="python" src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white"/>
   <img alt="network" src="https://img.shields.io/badge/Network-LitVM%20Testnet-111111"/>
   <img alt="bridge" src="https://img.shields.io/badge/Bridge-Caldera%20Metarouter-6E56CF"/>
   <img alt="multi-wallet" src="https://img.shields.io/badge/Multi--Wallet-Supported-111111"/>
+  <img alt="modules" src="https://img.shields.io/badge/Modules-13+-111111"/>
   <img alt="author" src="https://img.shields.io/badge/by-Yuurisandesu-111111"/>
 </p>
 
 <p>
   <b>LitVM Testnet Bot</b> is a full automation bot for the LitVM Testnet.<br/>
-  It handles ETH withdrawal via the Caldera bridge (LitVM → Sepolia), token transfers to random addresses, and automatic bridge order polling with auto-claim on Sepolia — all in one cycle.<br/>
+  Now featuring a fully modular architecture with 13+ independent protocol modules covering ETH bridging, token transfers, NFT minting, domain registration, DEX swaps, social interactions, and more.<br/>
   Built and distributed by <b>Yuurisandesu</b>.
 </p>
 
@@ -61,44 +62,11 @@ Add as many wallets as needed by incrementing the number.
 
 ### 2. Bot Settings (config.json)
 
-```json
-{
-  "eth_withdrawal": {
-    "enable": true,
-    "min_amount_eth": 0.1,
-    "max_amount_eth": 0.5
-  },
-  "token_transfer": {
-    "enable": true,
-    "min_amount": 5,
-    "max_amount": 10,
-    "min_count": 2,
-    "max_count": 5
-  },
-  "wrap": {
-    "enable": true,
-    "min_amount_eth": 0.01,
-    "max_amount_eth": 0.02,
-    "min_count": 1,
-    "max_count": 3
-  },
-  "supply": {
-    "enable": true,
-    "min_amount_eth": 0.01,
-    "max_amount_eth": 0.02,
-    "min_count": 1,
-    "max_count": 2
-  },
-  "sleep_seconds": 3600
-}
-
-```
-
-`min_eth_wd` and `max_eth_wd` control the random ETH amount (in ether) sent to the bridge per wallet. `min_count` and `max_count` set how many token transfer transactions run per wallet per cycle. `min_amount` and `max_amount` define the random token amount per transfer. `sleep_seconds` is the fixed delay between cycles. Set `enable_token_transfer` to `false` to skip the token transfer phase entirely.
+Each module has its own config block inside `config.json`. Enable or disable any module independently using `"enable": true/false`. Amount ranges, transaction counts, and other parameters can be tuned per module. Refer to the default `config.json` included in the repo for the full structure.
 
 ### 3. Token Contracts (contract.json)
 
-Fill in the token contracts you want to transfer per wallet address. Each wallet can hold one or more token entries:
+Fill in the token contracts for the **Lester Labs** token transfer module. Each wallet can hold one or more token entries:
 
 ```json
 {
@@ -126,17 +94,51 @@ python bot.py
 
 ## ✨ Features
 
-### 🌉 Phase 1 — ETH Withdrawal via Bridge
-The bot fetches a quote from the Caldera Metarouter, then sends ETH from each wallet on LitVM to the bridge withdrawal contract. The withdrawal amount is randomized within the configured `min_eth_wd` and `max_eth_wd` range. If balance is too low, the wallet is skipped. Each submitted order is saved to `order.json` for tracking.
+The bot runs all enabled modules sequentially for every wallet in each cycle. Each module is fully independent and can be toggled on or off via `config.json`.
 
-### 🔀 Phase 2 — Token Transfer to Random Addresses
-If `enable_token_transfer` is enabled, the bot reads token contracts from `contract.json` and transfers tokens from each configured wallet to randomly generated addresses. The number of transfers and the amount per transfer are both randomized within the configured ranges.
+### 🌉 Phase 1 — Caldera Liteforge (ETH Bridge)
+Fetches a quote from the Caldera Metarouter, then sends ETH from each wallet on LitVM to the bridge withdrawal contract. The withdrawal amount is randomized within the configured range. Wallets with insufficient balance are skipped. Each submitted order is saved to `order.json` for tracking.
 
-### 📡 Phase 3 — Bridge Order Polling and Auto Claim
-After all wallets complete their withdrawals, the bot polls the Metarouter API every 60 seconds to check the status of each pending bridge order. When an order becomes claimable, the bot automatically submits the claim transaction on Sepolia using the same wallet. Order status is persisted in `order.json` so the bot can resume tracking across restarts.
+### 🔀 Phase 2 — Lester Labs (Token Transfer)
+Reads token contracts from `contract.json` and transfers tokens from each configured wallet to randomly generated addresses. The number of transfers and amount per transfer are both randomized within the configured ranges.
+
+### 🔄 Phase 3 — Ayni Labs (Wrap & Supply)
+Handles WETH wrapping and ETH supply operations. Both `wrap` and `supply` sub-modules are independently configurable with their own amount ranges and repeat counts.
+
+### 🖼️ Phase 4 — OmniHub (NFT Mint)
+Mints NFTs on the OmniHub protocol. Configurable max NFT count per wallet per cycle.
+
+### 🧹 Phase 5 — Sweep Haus (NFT Mint)
+Mints NFTs on the Sweep Haus collection. Configurable max NFT count per wallet per cycle.
+
+### 🏷️ Phase 6 — InfinityName (Domain Registration)
+Registers random domain names on the InfinityName protocol. Configurable max name count per wallet per cycle.
+
+### 👋 Phase 7 — OnChainGM (Social)
+Two sub-modules: `saygm` posts an on-chain GM message, and `deploy` deploys a contract interaction. Both can be toggled independently.
+
+### 🌐 Phase 8 — ZNZ (Domain & All-In)
+Two sub-modules: `domain` registers ZNZ domains with a configurable max per wallet, and `allin` performs a combined ZNZ interaction.
+
+### 💱 Phase 9 — LitVM Swap (DEX)
+Swaps ETH for testnet tokens on the LitVM native DEX. Supports three pairs: `BTC`, `ETH`, and `XRP` — each with independent enable toggles, amount ranges, and swap counts.
+
+### 🔁 Phase 10 — Addax Swap (DEX)
+Swaps ETH for tokens on the Addax DEX. Supports three token pairs: `YUURISAN`, `TEQOIN`, and `AUSDC` — each independently configurable.
+
+### 🏥 Phase 11 — LitClinic (Social & Activity)
+Five sub-modules: `saygm`, `saygn`, `sayhello`, `activity_counter` (with a configurable daily max), and `checkin`. Each can be toggled independently.
+
+### 🎰 Phase 12 — LitLotery
+Participates in the LitLotery on-chain lottery. Simple enable/disable toggle.
+
+### 📡 Phase 13 — Bridge Order Polling & Auto Claim
+After all wallets complete their cycle, the bot polls the Metarouter API to check the status of each pending bridge order. When an order becomes claimable, the bot automatically submits the claim transaction on Sepolia. Order status is persisted in `order.json` so the bot can resume tracking across restarts. Retry count is configurable via `max_claim_retries`.
+
+---
 
 ### 👛 Multi Wallet
-All three phases run for every wallet loaded from `.env`. Wallets are processed sequentially within each cycle.
+All phases run for every wallet loaded from `.env`. Wallets are processed sequentially within each cycle.
 
 ### ⏱️ Auto Countdown
 After all tasks complete, the bot counts down the configured `sleep_seconds` before starting the next cycle.
@@ -147,12 +149,43 @@ After all tasks complete, the bot counts down the configured `sleep_seconds` bef
 
 ```text
 LitVM-Testnet/
-├── bot.py            # Main bot — bridge, token transfer, order polling
-├── config.json       # Amount ranges, tx count, sleep, and feature toggles
-├── contract.json     # Token contracts per wallet for transfer phase
-├── order.json        # Auto-generated — tracks bridge order status per wallet
-├── .env              # Wallet private keys
-└── requirements.txt  # Python dependencies
+├── bot.py                        # Main bot entrypoint — orchestrates all modules
+├── config.json                   # Per-module settings: enable toggles, amounts, counts
+├── contract.json                 # Token contracts per wallet (Lester Labs)
+├── order.json                    # Auto-generated — tracks bridge order status per wallet
+├── .env                          # Wallet private keys
+├── requirements.txt              # Python dependencies
+│
+├── core/
+│   ├── abis.py                   # Contract ABIs
+│   ├── loader.py                 # Config, keys, orders, contracts loader
+│   └── shared.py                 # Shared utilities, RPC connections, logging
+│
+├── modules/
+│   ├── caldera_liteforge/        # ETH bridge withdrawal + order claim (Caldera)
+│   ├── lester_labs/              # Token transfer to random addresses
+│   ├── ayni_labs/                # WETH wrap + ETH supply
+│   ├── omnihub/                  # NFT mint (OmniHub)
+│   ├── sweep_haus/               # NFT mint (Sweep Haus)
+│   ├── infinityname/             # Domain registration (InfinityName)
+│   ├── onchaingm/                # On-chain GM + contract deploy
+│   ├── znz/                      # ZNZ domain registration + all-in
+│   ├── litvm_swap/               # DEX swap (BTC / ETH / XRP pairs)
+│   ├── addax/                    # DEX swap on Addax (YUURISAN / TEQOIN / AUSDC)
+│   ├── litclinic/                # Social interactions + check-in
+│   ├── litlotery/                # On-chain lottery participation
+│   ├── arkada/                   # 🔜 Coming soon
+│   ├── dappit/                   # 🔜 Coming soon
+│   ├── drunken_cats/             # 🔜 Coming soon
+│   ├── lendvault/                # 🔜 Coming soon
+│   ├── litcash/                  # 🔜 Coming soon
+│   ├── liteswap/                 # 🔜 Coming soon
+│   ├── onmifun/                  # 🔜 Coming soon
+│   ├── penny4thots/              # 🔜 Coming soon
+│   └── wolfdex/                  # 🔜 Coming soon
+│
+└── utils/
+    └── banner.py                 # ASCII banner display
 ```
 
 ---
