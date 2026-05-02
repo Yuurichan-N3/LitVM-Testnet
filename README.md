@@ -9,13 +9,13 @@
   <img alt="network" src="https://img.shields.io/badge/Network-LitVM%20Testnet-111111"/>
   <img alt="bridge" src="https://img.shields.io/badge/Bridge-Caldera%20Metarouter-6E56CF"/>
   <img alt="multi-wallet" src="https://img.shields.io/badge/Multi--Wallet-Supported-111111"/>
-  <img alt="modules" src="https://img.shields.io/badge/Modules-13+-111111"/>
+  <img alt="modules" src="https://img.shields.io/badge/Modules-15+-111111"/>
   <img alt="author" src="https://img.shields.io/badge/by-Yuurisandesu-111111"/>
 </p>
 
 <p>
   <b>LitVM Testnet Bot</b> is a full automation bot for the LitVM Testnet.<br/>
-  Now featuring a fully modular architecture with 13+ independent protocol modules covering ETH bridging, token transfers, NFT minting, domain registration, DEX swaps, social interactions, and more.<br/>
+  Now featuring a fully modular architecture with 13+ independent protocol modules — covering ETH bridging, token transfers, NFT minting, domain registration, DEX swaps, social interactions, and more.<br/>
   Built and distributed by <b>Yuurisandesu</b>.
 </p>
 
@@ -132,7 +132,13 @@ Five sub-modules: `saygm`, `saygn`, `sayhello`, `activity_counter` (with a confi
 ### 🎰 Phase 12 — LitLotery
 Participates in the LitLotery on-chain lottery. Simple enable/disable toggle.
 
-### 📡 Phase 13 — Bridge Order Polling & Auto Claim
+### 🐱 Phase 13 — Drunken Cats (DEX Swap)
+Swaps zkLTC for tokens on the Drunken Cats DEX. Supports two pairs: `cNIP` and `DCAT` — each independently configurable with their own enable toggle, amount ranges, and swap counts. Slippage is calculated automatically from pool reserves using the constant-product formula.
+
+### 🎮 Phase 14 — Onmifun (Swap & Buy Token)
+Two sub-modules: `swap` exchanges zkLTC for `YR` token via the Onmifun swap router, and `buy_token` purchases meme tokens (`JMS`, `Yuri`) via the Onmifun buy router. Each pair is independently configurable. The swap module handles ERC-20 approval automatically before executing.
+
+### 📡 Phase 15 — Bridge Order Polling & Auto Claim
 After all wallets complete their cycle, the bot polls the Metarouter API to check the status of each pending bridge order. When an order becomes claimable, the bot automatically submits the claim transaction on Sepolia. Order status is persisted in `order.json` so the bot can resume tracking across restarts. Retry count is configurable via `max_claim_retries`.
 
 ---
@@ -174,13 +180,13 @@ LitVM-Testnet/
 │   ├── addax/                    # DEX swap on Addax (YUURISAN / TEQOIN / AUSDC)
 │   ├── litclinic/                # Social interactions + check-in
 │   ├── litlotery/                # On-chain lottery participation
+│   ├── drunken_cats/             # DEX swap zkLTC → cNIP / DCAT (Drunken Cats)
+│   ├── onmifun/                  # DEX swap zkLTC → YR + buy token (JMS / Yuri)
 │   ├── arkada/                   # 🔜 Coming soon
 │   ├── dappit/                   # 🔜 Coming soon
-│   ├── drunken_cats/             # 🔜 Coming soon
 │   ├── lendvault/                # 🔜 Coming soon
 │   ├── litcash/                  # 🔜 Coming soon
 │   ├── liteswap/                 # 🔜 Coming soon
-│   ├── onmifun/                  # 🔜 Coming soon
 │   ├── penny4thots/              # 🔜 Coming soon
 │   └── wolfdex/                  # 🔜 Coming soon
 │
