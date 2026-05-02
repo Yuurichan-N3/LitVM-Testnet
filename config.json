@@ -1,11 +1,11 @@
 {
   "caldera_liteforge": {
-    "enable": true,
+    "enable": false,
     "min_amount_eth": 0.0001,
     "max_amount_eth": 0.0002
   },
   "lester_labs": {
-    "enable": true,
+    "enable": false,
     "min_amount": 5,
     "max_amount": 10,
     "min_count": 5,
@@ -13,66 +13,60 @@
   },
   "ayni_labs": {
     "wrap": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 1
     },
     "supply": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.01,
       "max_amount_eth": 0.02,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 1
     }
   },
   "omnihub": {
-    "enable": true,
+    "enable": false,
     "max_nft_per_wallet": 3
   },
   "sweep_haus": {
-    "enable": true,
+    "enable": false,
     "max_nft_per_wallet": 3
   },
   "infinityname": {
-    "enable": true,
+    "enable": false,
     "max_name_per_wallet": 3
   },
   "onchaingm": {
-    "saygm": {
-      "enable": true
-    },
-    "deploy": {
-      "enable": true
-    }
+    "saygm": { "enable": false },
+    "deploy": { "enable": false }
   },
   "znz": {
     "domain": {
-      "enable": true,
-      "max_name_per_wallet": 3
+      "enable": false,
+      "max_name_per_wallet": 2
     },
-    "allin": {
-      "enable": true
-    }
+    "allin": { "enable": false }
   },
   "litvm_swap": {
     "btc": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
       "max_count": 3
     },
     "eth": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.002,
       "min_count": 1,
       "max_count": 3
     },
     "xrp": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
@@ -81,47 +75,80 @@
   },
   "addax": {
     "yuurisan": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 1
     },
     "teqoin": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 1
     },
     "ausdc": {
-      "enable": true,
+      "enable": false,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 1
     }
   },
   "litclinic": {
-    "saygm": {
-      "enable": true
-    },
-    "saygn": {
-      "enable": true
-    },
-    "sayhello": {
-      "enable": true
-    },
+    "saygm": { "enable": false },
+    "saygn": { "enable": false },
+    "sayhello": { "enable": false },
     "activity_counter": {
-      "enable": true,
+      "enable": false,
       "max_per_day": 3
     },
-    "checkin": {
-      "enable": true
-    }
+    "checkin": { "enable": false }
   },
   "litlotery": {
     "enable": true
+  },
+  "drunken_cats": {
+    "cnip": {
+      "enable": false,
+      "min_amount_eth": 0.0001,
+      "max_amount_eth": 0.0002,
+      "min_count": 1,
+      "max_count": 3
+    },
+    "dcat": {
+      "enable": false,
+      "min_amount_eth": 0.0001,
+      "max_amount_eth": 0.0002,
+      "min_count": 1,
+      "max_count": 3
+    }
+  },
+  "onmifun": {
+    "swap": {
+      "enable": true,
+      "min_amount_eth": 0.0001,
+      "max_amount_eth": 0.0002,
+      "min_count": 1,
+      "max_count": 3
+    },
+    "buy_token": {
+      "jms": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "yuri": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      }
+    }
   },
   "sleep_seconds": 3600,
   "max_claim_retries": 2

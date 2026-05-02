@@ -19,6 +19,8 @@ from modules.litvm_swap         import run_litvm_swap
 from modules.addax              import run_addax_swap
 from modules.litclinic          import run_litclinic
 from modules.litlotery          import run_litlotery
+from modules.drunken_cats       import run_drunken_cats_swap
+from modules.onmifun            import run_onmifun
 
 MY_PROJECT = "LitVM Testnet"
 
@@ -82,7 +84,13 @@ def main():
         cfg_litlotery = config.get("litlotery", {})
         run_litlotery(w3_lit, accounts_map, cfg_litlotery)
 
-        LY("Phase 13: Monitoring bridge orders until claimed (Caldera Liteforge)")
+        cfg_drunken_cats = config.get("drunken_cats", {})
+        run_drunken_cats_swap(w3_lit, accounts_map, cfg_drunken_cats)
+
+        cfg_onmifun = config.get("onmifun", {})
+        run_onmifun(w3_lit, accounts_map, cfg_onmifun)
+
+        LY("Phase 16: Monitoring bridge orders until claimed (Caldera Liteforge)")
         max_retries = config.get("max_claim_retries", 2)
         poll_orders(accounts_map, w3_sep, max_retries)
 
@@ -102,5 +110,5 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print(f"{RED}Script stopped by user.{RESET}")
+        print(f"\n{RED}Script stopped by user.{RESET}")
         sys.exit(0)
