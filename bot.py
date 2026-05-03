@@ -22,6 +22,7 @@ from modules.litlotery          import run_litlotery
 from modules.drunken_cats       import run_drunken_cats_swap
 from modules.onmifun            import run_onmifun
 from modules.last_hero          import run_last_hero
+from modules.wolfdex            import run_wolfdex
 
 MY_PROJECT = "LitVM Testnet"
 
@@ -93,6 +94,9 @@ def main():
 
         cfg_last_hero = config.get("last_hero", {})
         run_last_hero(w3_lit, accounts_map, cfg_last_hero)
+
+        cfg_wolfdex = config.get("wolfdex", {})
+        run_wolfdex(w3_lit, accounts_map, cfg_wolfdex)
 
         LY("Phase 17: Monitoring bridge orders until claimed (Caldera Liteforge)")
         max_retries = config.get("max_claim_retries", 2)

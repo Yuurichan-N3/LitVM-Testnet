@@ -9,7 +9,7 @@
   <img alt="network" src="https://img.shields.io/badge/Network-LitVM%20Testnet-111111"/>
   <img alt="bridge" src="https://img.shields.io/badge/Bridge-Caldera%20Metarouter-6E56CF"/>
   <img alt="multi-wallet" src="https://img.shields.io/badge/Multi--Wallet-Supported-111111"/>
-  <img alt="modules" src="https://img.shields.io/badge/Modules-15+-111111"/>
+  <img alt="modules" src="https://img.shields.io/badge/Modules-17+-111111"/>
   <img alt="author" src="https://img.shields.io/badge/by-Yuurisandesu-111111"/>
 </p>
 
@@ -138,7 +138,13 @@ Swaps zkLTC for tokens on the Drunken Cats DEX. Supports two pairs: `cNIP` and `
 ### 🎮 Phase 14 — Onmifun (Swap & Buy Token)
 Two sub-modules: `swap` exchanges zkLTC for `YR` token via the Onmifun swap router, and `buy_token` purchases meme tokens (`JMS`, `Yuri`) via the Onmifun buy router. Each pair is independently configurable. The swap module handles ERC-20 approval automatically before executing.
 
-### 📡 Phase 15 — Bridge Order Polling & Auto Claim
+### 🐺 Phase 15 — Wolf DEX (Faucet, Swap, Add LP, Stake)
+Four sub-modules dalam satu modul: `faucet` mengklaim token harian (BNB, Monad, HYPE) dengan tracking per-wallet agar tidak double claim; `swap` menukar zkLTC ke tiga token tersebut; `add_lp` menambah likuiditas ke pool dengan kalkulasi rasio token otomatis dari reserves; dan `stake` menstake LP token ke Stake contract. Semua sub-modul dan semua pasangan token bisa di-toggle secara independen. Tracking faucet disimpan ke `modules/wolfdex/information.json`.
+
+### 🦸 Phase 16 — Last Hero (Daily Ticket)
+Membeli tiket harian pada kontrak Last Hero. Bot mengecek apakah tiket sudah dibeli hari ini per wallet — jika sudah, wallet dilewati. Status tiket disimpan ke `modules/last_hero/information.json` dan otomatis di-reset saat tengah malam UTC.
+
+### 📡 Phase 17 — Bridge Order Polling & Auto Claim
 After all wallets complete their cycle, the bot polls the Metarouter API to check the status of each pending bridge order. When an order becomes claimable, the bot automatically submits the claim transaction on Sepolia. Order status is persisted in `order.json` so the bot can resume tracking across restarts. Retry count is configurable via `max_claim_retries`.
 
 ---
@@ -182,13 +188,15 @@ LitVM-Testnet/
 │   ├── litlotery/                # On-chain lottery participation
 │   ├── drunken_cats/             # DEX swap zkLTC → cNIP / DCAT (Drunken Cats)
 │   ├── onmifun/                  # DEX swap zkLTC → YR + buy token (JMS / Yuri)
+│   ├── wolfdex/                  # Faucet + swap + add LP + stake (BNB / Monad / HYPE)
+│   ├── last_hero/                # Daily ticket purchase with per-wallet cooldown tracking
 │   ├── arkada/                   # 🔜 Coming soon
 │   ├── dappit/                   # 🔜 Coming soon
 │   ├── lendvault/                # 🔜 Coming soon
 │   ├── litcash/                  # 🔜 Coming soon
 │   ├── liteswap/                 # 🔜 Coming soon
 │   ├── penny4thots/              # 🔜 Coming soon
-│   └── wolfdex/                  # 🔜 Coming soon
+│   └── [more coming soon...]
 │
 └── utils/
     └── banner.py                 # ASCII banner display

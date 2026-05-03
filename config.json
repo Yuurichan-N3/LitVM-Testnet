@@ -14,8 +14,8 @@
   "ayni_labs": {
     "wrap": {
       "enable": true,
-      "min_amount_eth": 0.0001,
-      "max_amount_eth": 0.0005,
+      "min_amount_eth": 0.001,
+      "max_amount_eth": 0.005,
       "min_count": 1,
       "max_count": 3
     },
@@ -50,7 +50,7 @@
   "znz": {
     "domain": {
       "enable": true,
-      "max_name_per_wallet": 2
+      "max_name_per_wallet": 3
     },
     "allin": {
       "enable": true
@@ -129,14 +129,14 @@
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 3
     },
     "dcat": {
       "enable": true,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 3
     }
   },
   "onmifun": {
@@ -150,8 +150,8 @@
     "buy_token": {
       "pengu": {
         "enable": true,
-        "min_amount_eth": 0.0001,
-        "max_amount_eth": 0.0002,
+        "min_amount_eth": 0.001,
+        "max_amount_eth": 0.002,
         "min_count": 1,
         "max_count": 3
       },
@@ -166,6 +166,80 @@
   },
   "last_hero": {
     "enable": true
+  },
+  "wolfdex": {
+    "faucet": {
+      "enable": true
+    },
+    "swap": {
+      "bnb": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "monad": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "hype": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      }
+    },
+    "add_lp": {
+      "bnb": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "monad": {
+        "enable": true,
+        "min_amount_eth": 0.000001,
+        "max_amount_eth": 0.000002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "hype": {
+        "enable": true,
+        "min_amount_eth": 0.000001,
+        "max_amount_eth": 0.000002,
+        "min_count": 1,
+        "max_count": 3
+      }
+    },
+    "stake": {
+      "bnb": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "monad": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      },
+      "hype": {
+        "enable": true,
+        "min_amount_eth": 0.0001,
+        "max_amount_eth": 0.0002,
+        "min_count": 1,
+        "max_count": 3
+      }
+    }
   },
   "sleep_seconds": 3600,
   "max_claim_retries": 2
