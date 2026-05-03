@@ -1,0 +1,1 @@
+from modules.last_hero._core_last_hero import run_last_hero
