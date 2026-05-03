@@ -15,16 +15,16 @@
     "wrap": {
       "enable": true,
       "min_amount_eth": 0.0001,
-      "max_amount_eth": 0.0002,
+      "max_amount_eth": 0.0005,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 3
     },
     "supply": {
       "enable": true,
       "min_amount_eth": 0.01,
       "max_amount_eth": 0.02,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 2
     }
   },
   "omnihub": {
@@ -50,7 +50,7 @@
   "znz": {
     "domain": {
       "enable": true,
-      "max_name_per_wallet": 3
+      "max_name_per_wallet": 2
     },
     "allin": {
       "enable": true
@@ -85,21 +85,21 @@
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 3
     },
     "teqoin": {
       "enable": true,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 2
     },
     "ausdc": {
       "enable": true,
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 1
+      "max_count": 3
     }
   },
   "litclinic": {
@@ -123,46 +123,8 @@
   "litlotery": {
     "enable": true
   },
-  "drunken_cats": {
-    "cnip": {
-      "enable": true,
-      "min_amount_eth": 0.0001,
-      "max_amount_eth": 0.0002,
-      "min_count": 1,
-      "max_count": 3
-    },
-    "dcat": {
-      "enable": true,
-      "min_amount_eth": 0.0001,
-      "max_amount_eth": 0.0002,
-      "min_count": 1,
-      "max_count": 3
-    }
-  },
-  "onmifun": {
-    "swap": {
-      "enable": true,
-      "min_amount_eth": 0.0001,
-      "max_amount_eth": 0.0002,
-      "min_count": 1,
-      "max_count": 3
-    },
-    "buy_token": {
-      "jms": {
-        "enable": true,
-        "min_amount_eth": 0.0001,
-        "max_amount_eth": 0.0002,
-        "min_count": 1,
-        "max_count": 3
-      },
-      "yuri": {
-        "enable": true,
-        "min_amount_eth": 0.0001,
-        "max_amount_eth": 0.0002,
-        "min_count": 1,
-        "max_count": 3
-      }
-    }
+  "last_hero": {
+    "enable": true
   },
   "sleep_seconds": 3600,
   "max_claim_retries": 2
