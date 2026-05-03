@@ -139,10 +139,10 @@ Swaps zkLTC for tokens on the Drunken Cats DEX. Supports two pairs: `cNIP` and `
 Two sub-modules: `swap` exchanges zkLTC for `YR` token via the Onmifun swap router, and `buy_token` purchases meme tokens (`JMS`, `Yuri`) via the Onmifun buy router. Each pair is independently configurable. The swap module handles ERC-20 approval automatically before executing.
 
 ### 🐺 Phase 15 — Wolf DEX (Faucet, Swap, Add LP, Stake)
-Four sub-modules dalam satu modul: `faucet` mengklaim token harian (BNB, Monad, HYPE) dengan tracking per-wallet agar tidak double claim; `swap` menukar zkLTC ke tiga token tersebut; `add_lp` menambah likuiditas ke pool dengan kalkulasi rasio token otomatis dari reserves; dan `stake` menstake LP token ke Stake contract. Semua sub-modul dan semua pasangan token bisa di-toggle secara independen. Tracking faucet disimpan ke `modules/wolfdex/information.json`.
+Four sub-modules in one: `faucet` claims daily tokens (BNB, Monad, HYPE) with per-wallet tracking to prevent double claims; `swap` exchanges zkLTC for those three tokens; `add_lp` adds liquidity to pools with automatic token ratio calculation from reserves; and `stake` stakes LP tokens to the Stake contract. All sub-modules and token pairs are independently toggleable.
 
 ### 🦸 Phase 16 — Last Hero (Daily Ticket)
-Membeli tiket harian pada kontrak Last Hero. Bot mengecek apakah tiket sudah dibeli hari ini per wallet — jika sudah, wallet dilewati. Status tiket disimpan ke `modules/last_hero/information.json` dan otomatis di-reset saat tengah malam UTC.
+Purchases a daily ticket on the Last Hero contract. The bot checks per wallet whether a ticket has already been bought today — if so, the wallet is skipped. Ticket status resets automatically at midnight UTC.
 
 ### 📡 Phase 17 — Bridge Order Polling & Auto Claim
 After all wallets complete their cycle, the bot polls the Metarouter API to check the status of each pending bridge order. When an order becomes claimable, the bot automatically submits the claim transaction on Sepolia. Order status is persisted in `order.json` so the bot can resume tracking across restarts. Retry count is configurable via `max_claim_retries`.
