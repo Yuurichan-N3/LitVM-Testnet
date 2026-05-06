@@ -9,7 +9,7 @@
   <img alt="network" src="https://img.shields.io/badge/Network-LitVM%20Testnet-111111"/>
   <img alt="bridge" src="https://img.shields.io/badge/Bridge-Caldera%20Metarouter-6E56CF"/>
   <img alt="multi-wallet" src="https://img.shields.io/badge/Multi--Wallet-Supported-111111"/>
-  <img alt="modules" src="https://img.shields.io/badge/Modules-17+-111111"/>
+  <img alt="modules" src="https://img.shields.io/badge/Modules-18+-111111"/>
   <img alt="author" src="https://img.shields.io/badge/by-Yuurisandesu-111111"/>
 </p>
 
@@ -136,15 +136,18 @@ Participates in the LitLotery on-chain lottery. Simple enable/disable toggle.
 Swaps zkLTC for tokens on the Drunken Cats DEX. Supports two pairs: `cNIP` and `DCAT` — each independently configurable with their own enable toggle, amount ranges, and swap counts. Slippage is calculated automatically from pool reserves using the constant-product formula.
 
 ### 🎮 Phase 14 — Onmifun (Swap & Buy Token)
-Two sub-modules: `swap` exchanges zkLTC for `YR` token via the Onmifun swap router, and `buy_token` purchases meme tokens (`JMS`, `Yuri`) via the Onmifun buy router. Each pair is independently configurable. The swap module handles ERC-20 approval automatically before executing.
+Two sub-modules: `swap` exchanges zkLTC for `YR` token via the Onmifun swap router, and `buy_token` purchases meme tokens (`Pengu`, `Yuri`) via the Onmifun buy router. Each pair is independently configurable. The swap module handles ERC-20 approval automatically before executing.
 
-### 🐺 Phase 15 — Wolf DEX (Faucet, Swap, Add LP, Stake)
-Four sub-modules in one: `faucet` claims daily tokens (BNB, Monad, HYPE) with per-wallet tracking to prevent double claims; `swap` exchanges zkLTC for those three tokens; `add_lp` adds liquidity to pools with automatic token ratio calculation from reserves; and `stake` stakes LP tokens to the Stake contract. All sub-modules and token pairs are independently toggleable.
-
-### 🦸 Phase 16 — Last Hero (Daily Ticket)
+### 🦸 Phase 15 — Last Hero (Daily Ticket)
 Purchases a daily ticket on the Last Hero contract. The bot checks per wallet whether a ticket has already been bought today — if so, the wallet is skipped. Ticket status resets automatically at midnight UTC.
 
-### 📡 Phase 17 — Bridge Order Polling & Auto Claim
+### 🐺 Phase 16 — Wolf DEX (Faucet, Swap, Add LP, Stake)
+Four sub-modules in one: `faucet` claims daily tokens (BNB, Monad, HYPE) with per-wallet tracking to prevent double claims; `swap` exchanges zkLTC for those three tokens; `add_lp` adds liquidity to pools with automatic token ratio calculation from reserves; and `stake` stakes LP tokens to the Stake contract. All sub-modules and token pairs are independently toggleable.
+
+### 🌉 Phase 17 — Multyra Bridge (zkLTC → Sepolia)
+Bridges zkLTC to Sepolia via the Multyra bridge contract. Amount per bridge transaction is randomized within the configured range (minimum 0.001 zkLTC enforced by the contract). Includes detailed error decoding for contract-level rejections such as bridge cooldown and minimum amount errors.
+
+### 📡 Phase 18 — Bridge Order Polling & Auto Claim
 After all wallets complete their cycle, the bot polls the Metarouter API to check the status of each pending bridge order. When an order becomes claimable, the bot automatically submits the claim transaction on Sepolia. Order status is persisted in `order.json` so the bot can resume tracking across restarts. Retry count is configurable via `max_claim_retries`.
 
 ---
@@ -187,9 +190,10 @@ LitVM-Testnet/
 │   ├── litclinic/                # Social interactions + check-in
 │   ├── litlotery/                # On-chain lottery participation
 │   ├── drunken_cats/             # DEX swap zkLTC → cNIP / DCAT (Drunken Cats)
-│   ├── onmifun/                  # DEX swap zkLTC → YR + buy token (JMS / Yuri)
-│   ├── wolfdex/                  # Faucet + swap + add LP + stake (BNB / Monad / HYPE)
+│   ├── onmifun/                  # DEX swap zkLTC → YR + buy token (PENGU / Yuri)
 │   ├── last_hero/                # Daily ticket purchase with per-wallet cooldown tracking
+│   ├── wolfdex/                  # Faucet + swap + add LP + stake (BNB / Monad / HYPE)
+│   ├── multyra/                  # zkLTC → Sepolia bridge via Multyra contract
 │   ├── arkada/                   # 🔜 Coming soon
 │   ├── dappit/                   # 🔜 Coming soon
 │   ├── lendvault/                # 🔜 Coming soon
