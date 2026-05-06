@@ -8,14 +8,14 @@
     "enable": true,
     "min_amount": 5,
     "max_amount": 10,
-    "min_count": 1,
-    "max_count": 3
+    "min_count": 5,
+    "max_count": 10
   },
   "ayni_labs": {
     "wrap": {
       "enable": true,
-      "min_amount_eth": 0.001,
-      "max_amount_eth": 0.005,
+      "min_amount_eth": 0.01,
+      "max_amount_eth": 0.02,
       "min_count": 1,
       "max_count": 3
     },
@@ -24,26 +24,16 @@
       "min_amount_eth": 0.01,
       "max_amount_eth": 0.02,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 2
     }
   },
   "omnihub": {
     "enable": true,
-    "max_nft_per_wallet": 1
+    "max_nft_per_wallet": 3
   },
   "sweep_haus": {
-    "litvm": {
-      "enable": true,
-      "max_nft_per_wallet": 20
-    },
-    "mr_lit": {
-      "enable": true,
-      "max_nft_per_wallet": 50
-    },
-    "yuurisan": {
-      "enable": true,
-      "max_nft_per_wallet": 50
-    }
+    "enable": true,
+    "max_nft_per_wallet": 3
   },
   "infinityname": {
     "enable": true,
@@ -102,7 +92,7 @@
       "min_amount_eth": 0.0001,
       "max_amount_eth": 0.0002,
       "min_count": 1,
-      "max_count": 3
+      "max_count": 1
     },
     "ausdc": {
       "enable": true,
@@ -124,7 +114,7 @@
     },
     "activity_counter": {
       "enable": true,
-      "max_per_day": 1
+      "max_per_day": 3
     },
     "checkin": {
       "enable": true
@@ -160,8 +150,8 @@
     "buy_token": {
       "pengu": {
         "enable": true,
-        "min_amount_eth": 0.0001,
-        "max_amount_eth": 0.0002,
+        "min_amount_eth": 0.001,
+        "max_amount_eth": 0.002,
         "min_count": 1,
         "max_count": 3
       },
@@ -251,6 +241,15 @@
       }
     }
   },
-  "sleep_seconds": 1600,
+  "multyra": {
+    "bridge": {
+      "enable": true,
+      "min_amount_eth": 0.0001,
+      "max_amount_eth": 0.0002,
+      "min_count": 1,
+      "max_count": 3
+    }
+  },
+  "sleep_seconds": 3600,
   "max_claim_retries": 2
 }
